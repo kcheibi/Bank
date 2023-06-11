@@ -1,0 +1,45 @@
+<form (ngSubmit)="submitDates()">
+  <p>
+    <label for="startDate">Start Date:</label>
+    <input type="date" [(ngModel)]="startDate" name="startDate" required />
+  </p>
+  <p>
+    <label for="endDate">End Date:</label>
+    <input type="date" [(ngModel)]="endDate" name="endDate" required />
+  </p>
+  <button type="submit">Submit</button>
+</form>
+<input type="text" [(ngModel)]="searchTerm" (ngModelChange)="filterUsers()" placeholder="Search" />
+<ul *ngIf="searchTerm !== ''">
+  <li class="list-group-item"*ngFor="let user of filteredResults">
+    <a class="btn btn-secondary" [href]="'userModification/' + user.id">{{ user.firstName }} {{ user.secondName }} {{user.adresses}}</a>
+  </li>
+</ul>
+<div *ngIf="displayDate">
+  
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Address</th>
+        <th>Date of Birth</th>
+        <th>Phone Number</th>
+        <th>Picture</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of filteredResults">
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.secondName }}</td>
+        <td>{{ user.adresses }}</td>
+        <td>{{ user.dateOfBirth }}</td>
+        <td>{{ user.phoneNumber }}</td>
+        <td><img [src]="getUserImage(user.picture)" alt="User Picture"></td>
+        <td><a (click)="navigateToUserModification(user.id)">Modifier</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

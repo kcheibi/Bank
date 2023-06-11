@@ -1,0 +1,31 @@
+<button  (click)="createUser()"class="btn btn-success">Create user</button>
+
+<table class="table table-striped">
+
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Address</th>
+        <th>Date of Birth</th>
+        <th>Phone Number</th>
+        <th>Picture</th> 
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.secondName }}</td>
+        <td>{{ user.adresses }}</td>
+        <td>{{ user.dateOfBirth }}</td>
+        <td>{{ user.phoneNumber }}</td>
+        <td><img [src]="getUserImage(user.picture)"></td>
+        <td>
+          <button (click)="deleteUser(user)" class="btn ">Delete</button>
+          <button  (click)="modifyUser(user)"class="btn ">Modify</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  

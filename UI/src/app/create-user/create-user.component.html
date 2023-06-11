@@ -1,0 +1,29 @@
+<h2>Create User</h2>
+<form (ngSubmit)="createUser()">
+  <p>
+    <strong>First Name:</strong>
+    <input type="text" [(ngModel)]="user.firstName" name="firstName" required />
+  </p>
+  <p>
+    <strong>Last Name:</strong>
+    <input type="text" [(ngModel)]="user.secondName" name="lastName" required />
+  </p>
+  <p>
+    <strong>Phone Number:</strong>
+    <input type="text" [(ngModel)]="user.phoneNumber" name="phoneNumber" required />
+  </p>
+  <p>
+    <strong>Address:</strong>
+    <input type="text" [(ngModel)]="user.adresses" name="adresses" required />
+  </p>
+  <p>
+    <strong>Date of Birth:</strong>
+    <input type="date" [(ngModel)]="user.dateOfBirth" name="dateOfBirth" required />
+  </p>
+  <p>
+    <strong>Profile Picture:</strong>
+    <input type="file" (change)="handleFileInput($event)" />
+    <img [src]="displayedImage" *ngIf="displayedImage" />
+  </p>
+  <button type="submit">Create User</button>
+</form>
